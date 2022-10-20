@@ -1,0 +1,16 @@
+#colorized {
+    font-size: 2em;
+    text-align: center;
+}
+
+.color1 {
+    color: orange;
+}
+
+.color2 {
+    color: darkblue;
+}
+
+.color3 {
+    color: darkorchid;
+}
