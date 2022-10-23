@@ -1,26 +1,20 @@
-
 const submit = document.getElementById("submit");
 
-submit.addEventListener('click', () => {
+submit.addEventListener('click', (e) => {
+    e.preventDefault();
     const input = document.getElementById("input").value;
-    console.log(input);
-    const tab = [];
-    console.log(input.length);
+    const colorized = document.getElementById("colorized");
+    let j = 1;
     for (let i = 0; i < input.length; ++i) {
-        tab[i] = input[i];
-        console.log(tab[i] + " ");
+        const span = document.createElement('span')
+        const char = document.createTextNode(input[i]) 
+        span.appendChild(char);
+        span.classList.add('color' + j);
+        ++j;
+        if(j > 3){
+            j = 1;
+        }
+        colorized.appendChild(span);
     }
 
-    for (let i = 0; i < tab.length; ++i) {
-        const span = document.createElement(span)
-        span.textcontent = tab[i];
-        span.classList.add('color' + i);
-    }
-
-})
-const input = document.getElementById("input").value;
-console.log(input)
-const spantext = document.createElement('span');
-spantext.textContent = input;
-const colorized = document.getElementById("colorized");
-colorized.appendChild(spantext);
+});
