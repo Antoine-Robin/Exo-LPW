@@ -1,6 +1,29 @@
+body{
+    margin: auto;
+    font-size: 1.5em;
+}
+
+form{
+    text-align: center;
+    margin-top: 10%;
+}
+
+button{
+    cursor: pointer;
+    background-color: darkslategray;
+    width: 8rem;
+    height: 3rem;
+    color: white;
+    font-size: 1em;
+    border-radius: 5px;
+    margin-top: 2.5%;
+}
+
 #colorized {
     font-size: 2em;
     text-align: center;
+    margin-top: 10%;
+    font-weight: bold;
 }
 
 .color1 {
@@ -12,5 +35,5 @@
 }
 
 .color3 {
-    color: darkorchid;
+    color: green;
 }
