@@ -1,0 +1,30 @@
+body {
+    justify-content: center;
+    display: flex;
+    margin-top: 2%;
+}
+
+.grid-container {
+    display: grid;
+    border: 1px solid black;
+}
+
+
+.grid-item {
+    font-size: 30px;
+    text-align: center;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+}
+
+.grid-1 {
+    background: #000;
+}
+
+.grid-2 {
+    background: #fff;
+}
