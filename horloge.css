@@ -1,0 +1,53 @@
+.horloge-container {
+    font-size: 10em;
+    width: 50%;
+    height: 5.5em;
+    position: relative;
+    display: none;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background: darkslateblue;
+    color: white;
+    width: 10rem;
+    height: 3.5rem;
+    font-size: 1.5em;
+    border: black 1px solid;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.aiguille{
+    border-right: solid 8px;
+    position: absolute;
+    transform-origin: bottom;
+    border-top-right-radius: 20%;
+    border-top-left-radius: 20%;
+}
+
+#heures{
+    height: 250px;
+    border-color: purple;
+    top: 220px;
+    left: 50%;
+}
+
+#minutes{
+    border-color: green;
+    height: 300px;
+    top: 170px;
+    left: 50%;
+}
+
+#secondes{
+    border-color:  orange;
+    height: 350px;
+    top: 120px;
+    left: 50%;
+}
