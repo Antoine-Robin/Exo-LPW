@@ -15,10 +15,32 @@ sumbit.addEventListener('click', () => {
 
 getFromLocalStorage();
 
-function displayList(list) {
-    document.getElementById('list').innerHTML = '';
+function displayList(list, filter) {
+
+    let listTodo = [];
+    let listDone = [];
+
     for (let i = 0; i < list.length; ++i) {
-        const isValidated = list[i].isValidated ? "validated" : "";
+        if (list[i].isValidated) {
+            listDone.push(list[i])
+        } else {
+            listTodo.push(list[i])
+        }
+    }
+
+    document.getElementById('list').innerHTML = '';
+
+    let loopArray = [];
+    if (filter == "done") {
+        loopArray = listDone;
+    } else if (filter == "todo") {
+        loopArray = listTodo;
+    } else {
+        loopArray = list
+    }
+
+    for (let i = 0; i < loopArray.length; ++i) {
+        const isValidated = loopArray[i].isValidated ? "validated" : "";
         document.getElementById('list').innerHTML += ` <div class="list-item"> <i onclick="validate(${i})" class="fa-solid fa-check"></i> <span data-index="${i}" class=" task-item ${isValidated}"> ${list[i].content} </span> 
     <button onclick="deleteItem(${i})" class="delete"> 
     <i class="fa-regular fa-trash"></i> </button> <button onclick="editTask(${i})" > <i class="fa-solid fa-pen-to-square"></i> </button> </div> `
@@ -54,16 +76,21 @@ function validate(i) {
 }
 
 function editTask(i) {
-    const editedTask = document.querySelector(`[data-index="${i}"]`);
-    editedTask.innerHTML = `<input type="text" id="input-edit" value="${taskList[i].content}" > <button id="validEdit"> valider </button>`
-    document.getElementById('validEdit').addEventListener('click', () => {
-        const edited = document.getElementById('input-edit').value
-        console.log(edited);
-        taskList[i].content = edited;
-        addToLocalStorage(taskList);
-    })
+    if (!taskList[i].isValidated) {
+        const editedTask = document.querySelector(`[data-index="${i}"]`);
+        editedTask.innerHTML = `<input type="text" id="input-edit" value="${taskList[i].content}" > <button id="validEdit"> valider </button>`
+        document.getElementById('validEdit').addEventListener('click', () => {
+            const edited = document.getElementById('input-edit').value
+            taskList[i].content = edited;
+            addToLocalStorage(taskList);
+        })
+    }
 }
 
 
-
+function handleFilter() {
+    const select = document.getElementById('select')
+    let filter = select.options[select.selectedIndex].value;
+    displayList(taskList, filter)
+}
 
