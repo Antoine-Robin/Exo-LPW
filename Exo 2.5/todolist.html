@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist - GIT</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/99863e5f57.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todolist</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="https://kit.fontawesome.com/99863e5f57.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-
-
+  <body>
     <section class="form-section">
-        <h1>To do list</h1>
-        <div class="form">
-            <input id="task" placeholder="Tâche à faire..." type="text">
-            <button id="submit" type="button"> Ajouter </button>
-        </div>
+      <h1>To do list</h1>
+      <div class="form">
+        <input id="task" placeholder="Tâche à faire..." type="text" />
+        <button id="submit" type="button">Ajouter</button>
+      </div>
     </section>
-
 
     <section class="list-section">
-
-        <select onchange="handleFilter()" name="" id="select">
-            <option value="all"> Toutes les taches </option>
-            <option value="done"> Taches déjà faites </option>
-            <option value="todo"> Taches à faire </option>
-        </select>
-        <div id="list">
-
-        </div>
+      <select onchange="handleFilter()" name="" id="select">
+        <option value="all">Toutes les taches</option>
+        <option value="done">Taches déjà faites</option>
+        <option value="todo">Taches à faire</option>
+      </select>
+      <div id="list"></div>
     </section>
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>
