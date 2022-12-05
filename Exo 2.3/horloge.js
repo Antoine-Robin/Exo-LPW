@@ -14,7 +14,6 @@ function startClock() {
   document.getElementById("heures").innerHTML = leadingZeros(heures) + ":";
   document.getElementById("minutes").innerHTML = leadingZeros(minutes) + ":";
   document.getElementById("secondes").innerHTML = leadingZeros(secondes);
-  console.log(secondes);
 }
 
 document.getElementById("button").addEventListener("click", () => {
