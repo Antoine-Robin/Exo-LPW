@@ -21,14 +21,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-console.log(db);
-
-const querySnapshot = await getDocs(collection(db, "TodoList"));
-querySnapshot.forEach((doc) => {
-  const item = Object.assign({ id: doc.id }, doc.data());
-  console.log(item);
-});
+const deleteTask = (id) => {
+  const docRef = doc(db, "TodoList", id);
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("Entire Document has been deleted successfully.");
+      displayALL();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 const sumbit = document.getElementById("submit");
 sumbit.addEventListener("click", async (e) => {
@@ -43,6 +46,30 @@ sumbit.addEventListener("click", async (e) => {
   }
   task.value = "";
 });
+
+const querySnapshot = await getDocs(collection(db, "TodoList"));
+function displayALL() {
+  document.getElementById("list").innerHTML = "";
+  querySnapshot.forEach((doc) => {
+    const item = Object.assign({ id: doc.id }, doc.data());
+    writeList(item);
+  });
+}
+
+const writeList = function (item) {
+  const isValidated = item.done ? "validated" : "";
+  document.getElementById(
+    "list"
+  ).innerHTML += `<div class="list-item"> <i onclick="validate()" class="fa-solid fa-check"></i> <span data-index="" class=" task-item ${isValidated}"> ${
+    item.task
+  } </span>
+        <button onclick="deleteTask('${item.id}')" class="delete">
+        <i class="fa-regular fa-trash"></i> </button> <button ${
+          item.done ? "disabled" : ""
+        } onclick="editTask()" > <i class="fa-solid fa-pen-to-square"></i> </button> </div> `;
+};
+
+displayALL();
 
 // ancien code avec localstorage:
 // sumbit.addEventListener("click", () => {
