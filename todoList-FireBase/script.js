@@ -21,17 +21,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const deleteTask = (id) => {
-  const docRef = doc(db, "TodoList", id);
-  deleteDoc(docRef)
-    .then(() => {
-      console.log("Entire Document has been deleted successfully.");
-      displayALL();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+// const deleteTask = (id) => {
+//   const docRef = doc(db, "TodoList", id);
+//   deleteDoc(docRef)
+//     .then(() => {
+//       console.log("Entire Document has been deleted successfully.");
+//       displayALL();
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
 
 const sumbit = document.getElementById("submit");
 sumbit.addEventListener("click", async (e) => {
@@ -50,23 +50,38 @@ sumbit.addEventListener("click", async (e) => {
 const querySnapshot = await getDocs(collection(db, "TodoList"));
 function displayALL() {
   document.getElementById("list").innerHTML = "";
-  querySnapshot.forEach((doc) => {
+  querySnapshot.forEach((doc, index) => {
     const item = Object.assign({ id: doc.id }, doc.data());
+    console.log(index);
     writeList(item);
   });
 }
 
 const writeList = function (item) {
   const isValidated = item.done ? "validated" : "";
-  document.getElementById(
-    "list"
-  ).innerHTML += `<div class="list-item"> <i onclick="validate()" class="fa-solid fa-check"></i> <span data-index="" class=" task-item ${isValidated}"> ${
+  let div = document.createElement("div");
+
+  div.innerHTML = `<div class="list-item"> <i onclick="validate()" class="fa-solid fa-check"></i> <span data-index="" class=" task-item ${isValidated}"> ${
     item.task
   } </span>
-        <button onclick="deleteTask('${item.id}')" class="delete">
+        <button class="delete" id="deleteItem">
         <i class="fa-regular fa-trash"></i> </button> <button ${
           item.done ? "disabled" : ""
         } onclick="editTask()" > <i class="fa-solid fa-pen-to-square"></i> </button> </div> `;
+
+  document.getElementById("list").appendChild(div);
+
+  div.querySelector(".delete").addEventListener("click", () => {
+    const docRef = doc(db, "TodoList", item.id);
+    deleteDoc(docRef)
+      .then(() => {
+        console.log("Entire Document has been deleted successfully.");
+        displayALL();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 };
 
 displayALL();
