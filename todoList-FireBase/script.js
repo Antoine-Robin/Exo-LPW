@@ -22,20 +22,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-<<<<<<< HEAD
-=======
-// const deleteTask = (id) => {
-//   const docRef = doc(db, "TodoList", id);
-//   deleteDoc(docRef)
-//     .then(() => {
-//       console.log("Entire Document has been deleted successfully.");
-//       displayALL();
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
->>>>>>> 28042e670af13e83bca51f24b3d37bc0728247e5
 
 const sumbit = document.getElementById("submit");
 sumbit.addEventListener("click", async (e) => {
@@ -63,9 +49,6 @@ function displayALL() {
 
 const writeList = async function (item) {
   const isValidated = item.done ? "validated" : "";
-<<<<<<< HEAD
-
-  console.log(isValidated);
   let div = document.createElement("div");
 
   div.innerHTML = `<div class="list-item"> <i id="validate" class="fa-solid fa-check"></i> <span data-index="" class=" task-item ${isValidated}"> ${
@@ -79,36 +62,17 @@ const writeList = async function (item) {
   document.getElementById("list").appendChild(div);
 
   // handle delete
-=======
-  let div = document.createElement("div");
-
-  div.innerHTML = `<div class="list-item"> <i onclick="validate()" class="fa-solid fa-check"></i> <span data-index="" class=" task-item ${isValidated}"> ${
-    item.task
-  } </span>
-        <button class="delete" id="deleteItem">
-        <i class="fa-regular fa-trash"></i> </button> <button ${
-          item.done ? "disabled" : ""
-        } onclick="editTask()" > <i class="fa-solid fa-pen-to-square"></i> </button> </div> `;
-
-  document.getElementById("list").appendChild(div);
-
->>>>>>> 28042e670af13e83bca51f24b3d37bc0728247e5
   div.querySelector(".delete").addEventListener("click", () => {
     const docRef = doc(db, "TodoList", item.id);
     deleteDoc(docRef)
       .then(() => {
         console.log("Entire Document has been deleted successfully.");
-<<<<<<< HEAD
         div.style.display = "none";
-=======
-        displayALL();
->>>>>>> 28042e670af13e83bca51f24b3d37bc0728247e5
       })
       .catch((error) => {
         console.log(error);
       });
   });
-<<<<<<< HEAD
 
   // handle validation:
 
@@ -144,8 +108,5 @@ const writeList = async function (item) {
       ).innerHTML = `<span data-index="" class=" task-item ${isValidated}"> ${editedTask} </span>`;
     });
   });
-=======
->>>>>>> 28042e670af13e83bca51f24b3d37bc0728247e5
 };
-
 displayALL();
