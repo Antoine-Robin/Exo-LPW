@@ -44,7 +44,7 @@ input {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
 }
 
 /* The Close Button */
@@ -60,4 +60,13 @@ input {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+h3 {
+  text-align: center;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
 }

@@ -9,12 +9,7 @@
   </head>
   <body>
     <div class="container-form">
-      <input
-        id="input-text"
-        type="text"
-        placeholder="Chercher un pokémon"
-        onchange=""
-      />
+      <input id="input-text" type="text" placeholder="Chercher un pokémon" />
     </div>
     <section class="list">
       <div class="listPokedex-container">
@@ -25,7 +20,17 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+
+        <h3 class="pokemonName"></h3>
+        <ul>
+          <li id="taille"></li>
+          <li id="poid"></li>
+          <li id="type"></li>
+        </ul>
+
+        <div class="img-container">
+          <img id="artwork" src="" alt="" />
+        </div>
       </div>
     </div>
     <script src="./script.js"></script>
