@@ -53,7 +53,7 @@ function print(filter) {
   }
   for (let i = 0; i < dataList.length; ++i) {
     if (dataList[i].name.includes(filter, 0)) {
-      div.innerHTML += `<span>${dataList[i].name} </span>  <button onclick="getPokemonInfo(${i})" id="btn-view" data-index="${dataList[i].name}" > Voir plus </button> <br />`;
+      div.innerHTML += `<div class="pokemon-card"><span class="name">${dataList[i].name} </span>  <button onclick="getPokemonInfo(${i})" id="btn-view" data-index="${dataList[i].name}" > Voir plus </button>`;
     }
   }
 
