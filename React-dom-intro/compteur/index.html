@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compteur</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      class counter extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            count: 10,
+          };
+        }
+
+        increment() {
+          this.setstate({
+            count: this.state.count + 1,
+          });
+        }
+
+        decrement() {
+          this.setstate({
+            count: this.state.count - 1,
+          });
+        }
+        render() {
+          return React.createElement(
+            "div",
+            {},
+            React.createElement(
+              "span",
+              { Style: "margin-right: 10px" },
+              this.state.count
+            ),
+            React.createElement(
+              "button",
+              {
+                onClick: () => this.increment,
+              },
+              "plus"
+            ),
+            React.createElement(
+              "button",
+              {
+                onClick: () => this.decrement,
+              },
+              "moins"
+            )
+          );
+        }
+      }
+
+      const element = React.createElement(counter);
+      ReactDOM.render(element, document.getElementById("root"));
+    </script>
+  </body>
+</html>
