@@ -26,13 +26,13 @@
         }
 
         increment() {
-          this.setstate({
+          this.setState({
             count: this.state.count + 1,
           });
         }
 
         decrement() {
-          this.setstate({
+          this.setState({
             count: this.state.count - 1,
           });
         }
@@ -48,14 +48,14 @@
             React.createElement(
               "button",
               {
-                onClick: () => this.increment,
+                onClick: () => this.increment(),
               },
               "plus"
             ),
             React.createElement(
               "button",
               {
-                onClick: () => this.decrement,
+                onClick: () => this.decrement(),
               },
               "moins"
             )
